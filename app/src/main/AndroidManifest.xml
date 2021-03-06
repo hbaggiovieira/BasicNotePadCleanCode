@@ -3,7 +3,8 @@
     package="com.example.basicnotepad">
 
     <application
-        android:allowBackup="true"
+        android:name=".core.application.CustomApplication"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -12,7 +13,8 @@
         <activity
             android:name=".home.HomeActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.BasicNotePad.NoActionBar">
+            android:theme="@style/Theme.BasicNotePad.NoActionBar"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
