@@ -38,11 +38,11 @@ class AddNoteFragment : Fragment() {
 
     private fun setupButtons() {
         fabSaveNote.setOnClickListener{
-            val description = txtNoteDescription.text.toString()
+            val description = edtTxtNote.text.toString()
             sharedViewModel.save(description)
             Toast.makeText(requireContext(), "Anotação salva com sucesso!", Toast.LENGTH_SHORT)
                 .show()
-            requireActivity().onBackPressed()
+//            requireActivity().onBackPressed()
         }
     }
 

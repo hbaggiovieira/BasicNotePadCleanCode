@@ -6,6 +6,6 @@ import org.koin.dsl.module
 
 val notesModule = module {
 
-    viewModel { HomeSharedViewModel() }
+    viewModel { HomeSharedViewModel(get()) }
 
 }

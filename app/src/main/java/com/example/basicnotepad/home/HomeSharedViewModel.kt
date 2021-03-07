@@ -17,8 +17,7 @@ class HomeSharedViewModel (application: Application) : AndroidViewModel(applicat
 
 
     fun save(description: String) {
-        val note =
-            Notes(description)
+        val note = Notes(description)
         mNotesRepository.save(note)
     }
 }

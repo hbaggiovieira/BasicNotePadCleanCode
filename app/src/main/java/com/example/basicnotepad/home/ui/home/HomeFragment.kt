@@ -55,8 +55,6 @@ class HomeFragment : Fragment() {
 
     private fun setupButtons() {
         fab.setOnClickListener {
-            observe(sharedViewModel.note) {
-            }
             navigator.navigate(R.id.action_homeFragment_to_addNoteFragment)
         }
     }
@@ -65,19 +63,5 @@ class HomeFragment : Fragment() {
         val divisor = DividerItemDecoration(requireContext(), VERTICAL)
         recyclerNotes.addItemDecoration(divisor)
         recyclerNotes.adapter = recyclerViewAdapter
-    }
-
-    private fun setupRecyclerAdapter() {
-
-
-    }
-
-    private fun observe() {
-        sharedViewModel.note.observe(this, Observer {
-            val list: MutableList<String> = arrayListOf()
-            for (item in it) {
-
-            }
-        })
     }
 }
