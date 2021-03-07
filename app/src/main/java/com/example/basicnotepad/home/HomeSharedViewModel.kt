@@ -29,6 +29,10 @@ class HomeSharedViewModel(application: Application) : AndroidViewModel(applicati
         }
     }
 
+    fun delete (id: Int) {
+        mNotesRepository.delete(id)
+    }
+
     fun load() {
         mNoteList.value = mNotesRepository.getAll()
     }

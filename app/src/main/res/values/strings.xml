@@ -11,4 +11,8 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_label_add_note_fragment">Add Note Fragment</string>
     <string name="title_label_home_fragment">Home Fragment</string>
+    <string name="alert_dialog_delete_title">Remover</string>
+    <string name="alert_dialog_delete_message">Deseja remover anotação?</string>
+    <string name="alert_dialog_button_remove">Remover</string>
+    <string name="alert_dialog_button_cancel">Cancelar</string>
 </resources>

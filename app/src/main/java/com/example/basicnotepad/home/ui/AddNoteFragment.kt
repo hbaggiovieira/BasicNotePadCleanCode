@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.example.basicnotepad.R
+import com.example.basicnotepad.core.utils.hideKeyboard
+import com.example.basicnotepad.core.utils.lockScreen
 import com.example.basicnotepad.home.HomeSharedViewModel
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_add_note.*
@@ -19,6 +21,9 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class AddNoteFragment : Fragment() {
     private val sharedViewModel by sharedViewModel<HomeSharedViewModel>()
+
+    private var mNoteId: Int = 0
+
 
     private val args by navArgs<AddNoteFragmentArgs>()
 
@@ -37,20 +42,18 @@ class AddNoteFragment : Fragment() {
         loadData()
     }
 
-    private fun setupButtons() {
-        fabSaveNote.setOnClickListener {
-            val id = args.noteId
-            val description = edtTxtNote.text.toString()
-
-            sharedViewModel.save(id, description)
-
-            requireActivity().onBackPressed()
-        }
-    }
-
     private fun setupViews() {
         requireActivity().toolbar.titleLabel.text =
             getString(R.string.title_label_add_note_fragment)
+    }
+
+    private fun setupButtons() {
+        fabSaveNote.setOnClickListener {
+            hideKeyboard()
+            val description = edtTxtNote.text.toString()
+            sharedViewModel.save(mNoteId, description)
+            requireActivity().onBackPressed()
+        }
     }
 
     private fun loadData() {

@@ -1,5 +1,6 @@
 package com.example.basicnotepad.home.recycler_view
 
+import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -45,6 +46,17 @@ class NotesListAdapter : RecyclerView.Adapter<NotesListAdapter.ViewHolder>() {
 
             itemView.txtNoteDescription.setOnClickListener {
                 listener.onClick(note.id)
+            }
+            itemView.txtNoteDescription.setOnLongClickListener {
+                AlertDialog.Builder(itemView.context)
+                    .setTitle(R.string.alert_dialog_delete_title)
+                    .setMessage(R.string.alert_dialog_delete_message)
+                    .setPositiveButton(R.string.alert_dialog_button_remove) { dialog, which ->
+                        listener.onDelete(note.id)
+                    }
+                    .setNeutralButton(R.string.alert_dialog_button_cancel, null)
+                    .show()
+                true
             }
         }
     }

@@ -1,5 +1,7 @@
 package com.example.basicnotepad.home.ui.home
 
+import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +11,8 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.basicnotepad.R
 import com.example.basicnotepad.core.services.repository.SharedPreferencesRepository
+import com.example.basicnotepad.core.utils.hideKeyboard
+import com.example.basicnotepad.core.utils.lockScreen
 import com.example.basicnotepad.home.HomeSharedViewModel
 import com.example.basicnotepad.home.recycler_view.NotesListAdapter
 import com.example.basicnotepad.home.recycler_view.NotesListener
@@ -48,7 +52,8 @@ class HomeFragment : Fragment() {
 
     private fun setupButtons() {
         fab.setOnClickListener {
-            navigator.navigate(HomeFragmentDirections.actionHomeFragmentToAddNoteFragment(true,  id))
+            hideKeyboard()
+            navigator.navigate(HomeFragmentDirections.actionHomeFragmentToAddNoteFragment(true, id))
         }
     }
 
@@ -64,7 +69,15 @@ class HomeFragment : Fragment() {
 
         mListener = object : NotesListener {
             override fun onClick(id: Int) {
-                navigator.navigate(HomeFragmentDirections.actionHomeFragmentToAddNoteFragment(false,  id))
+                hideKeyboard()
+                navigator.navigate(
+                    HomeFragmentDirections.actionHomeFragmentToAddNoteFragment(false, id)
+                )
+            }
+
+            override fun onDelete(id: Int) {
+                sharedViewModel.delete(id)
+                sharedViewModel.load()
             }
         }
         mAdapter.attachListener(mListener)
