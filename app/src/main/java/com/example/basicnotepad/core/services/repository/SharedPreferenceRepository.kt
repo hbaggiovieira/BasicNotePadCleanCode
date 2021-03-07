@@ -1,4 +1,4 @@
-package com.example.basicnotepad.core.repository
+package com.example.basicnotepad.core.services.repository
 
 import android.content.Context
 import android.content.SharedPreferences

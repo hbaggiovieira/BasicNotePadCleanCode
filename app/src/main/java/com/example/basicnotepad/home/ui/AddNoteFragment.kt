@@ -6,12 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import com.example.basicnotepad.R
-import com.example.basicnotepad.core.repository.SharedPreferencesRepository
+import com.example.basicnotepad.core.services.repository.SharedPreferencesRepository
 import com.example.basicnotepad.home.HomeSharedViewModel
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_add_note.*
 import kotlinx.android.synthetic.main.layout_dafault_toolbar.view.*
+import kotlinx.android.synthetic.main.note_list_item.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class AddNoteFragment : Fragment() {
@@ -36,9 +38,11 @@ class AddNoteFragment : Fragment() {
 
     private fun setupButtons() {
         fabSaveNote.setOnClickListener{
-            pref.save("note", edtTxtNote.text.toString())
+            val description = txtNoteDescription.text.toString()
+            sharedViewModel.save(description)
             Toast.makeText(requireContext(), "Anotação salva com sucesso!", Toast.LENGTH_SHORT)
                 .show()
+            requireActivity().onBackPressed()
         }
     }
 
@@ -52,5 +56,15 @@ class AddNoteFragment : Fragment() {
         } else {
             edtTxtNote.setText(savedString)
         }
+    }
+
+    private fun observe() {
+        sharedViewModel.saveNote.observe(requireActivity(), Observer {
+            if (it) {
+                Toast.makeText(requireContext(), "Sucesso :D !", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(requireContext(), "Falha! D: !", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }
