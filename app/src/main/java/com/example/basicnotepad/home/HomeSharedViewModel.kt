@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.example.basicnotepad.core.services.model.Notes
 import com.example.basicnotepad.core.services.repository.NotesRepository
 
@@ -18,6 +17,9 @@ class HomeSharedViewModel (application: Application) : AndroidViewModel(applicat
     private val mNoteList = MutableLiveData<List<Notes>>()
     val noteList: LiveData<List<Notes>> = mNoteList
 
+    private var mNote = MutableLiveData<Notes>()
+    val note: LiveData<Notes> = mNote
+
     fun save(description: String) {
         val note = Notes(description)
         mNotesRepository.save(note)
@@ -25,5 +27,9 @@ class HomeSharedViewModel (application: Application) : AndroidViewModel(applicat
 
     fun load() {
         mNoteList.value = mNotesRepository.getAll()
+    }
+
+    fun loadNote(id: Int) {
+        mNote.value = mNotesRepository.get(id)
     }
 }

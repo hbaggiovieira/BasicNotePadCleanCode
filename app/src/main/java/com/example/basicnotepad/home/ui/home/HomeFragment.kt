@@ -22,7 +22,6 @@ class HomeFragment : Fragment() {
     private val mAdapter: NotesListAdapter = NotesListAdapter()
     private lateinit var mListener: NotesListener
 
-//    private val editDestination =
     private val navigator get() = findNavController()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,7 +48,7 @@ class HomeFragment : Fragment() {
 
     private fun setupButtons() {
         fab.setOnClickListener {
-            navigator.navigate(R.id.action_homeFragment_to_addNoteFragment)
+            navigator.navigate(HomeFragmentDirections.actionHomeFragmentToAddNoteFragment(true,  id))
         }
     }
 
@@ -65,7 +64,7 @@ class HomeFragment : Fragment() {
 
         mListener = object : NotesListener {
             override fun onClick(id: Int) {
-                navigator.navigate(R.id.action_homeFragment_to_addNoteFragment)
+                navigator.navigate(HomeFragmentDirections.actionHomeFragmentToAddNoteFragment(false,  id))
             }
         }
         mAdapter.attachListener(mListener)

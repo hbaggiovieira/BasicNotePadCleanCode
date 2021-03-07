@@ -8,7 +8,7 @@
         android:id="@+id/homeFragment"
         android:name="com.example.basicnotepad.home.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_addNoteFragment"
             app:destination="@id/addNoteFragment" />
@@ -18,5 +18,11 @@
         android:name="com.example.basicnotepad.home.ui.AddNoteFragment"
         android:label="fragment_add_note"
         tools:layout="@layout/fragment_add_note">
+        <argument
+            android:name="isNew"
+            app:argType="boolean"/>
+        <argument
+            android:name="noteId"
+            app:argType="integer"/>
     </fragment>
 </navigation>
