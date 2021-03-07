@@ -48,7 +48,7 @@ class AddNoteFragment : Fragment() {
         fabSaveNote.setOnClickListener {
             hideKeyboard()
             val description = edtTxtNote.text.toString()
-            sharedViewModel.save(args.noteId, description)
+            sharedViewModel.save(args.isNew, args.noteId, description)
             requireActivity().onBackPressed()
         }
     }

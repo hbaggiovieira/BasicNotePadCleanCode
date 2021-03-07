@@ -20,9 +20,9 @@ class HomeSharedViewModel(application: Application) : AndroidViewModel(applicati
     private var mNote = MutableLiveData<Notes>()
     val note: LiveData<Notes> = mNote
 
-    fun save(id: Int, description: String) {
+    fun save(isNew: Boolean, id: Int, description: String) {
         val note = Notes(description, id)
-        if (id == 0) {
+        if (isNew) {
             mSaveNote.value = mNotesRepository.save(note)
         } else {
             mSaveNote.value = mNotesRepository.update(note)
