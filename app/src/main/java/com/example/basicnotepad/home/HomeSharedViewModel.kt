@@ -15,9 +15,15 @@ class HomeSharedViewModel (application: Application) : AndroidViewModel(applicat
     private var mSaveNote = MutableLiveData<Boolean>()
     val saveNote: LiveData<Boolean> = mSaveNote
 
+    private val mNoteList = MutableLiveData<List<Notes>>()
+    val noteList: LiveData<List<Notes>> = mNoteList
 
     fun save(description: String) {
         val note = Notes(description)
         mNotesRepository.save(note)
+    }
+
+    fun load() {
+        mNoteList.value = mNotesRepository.getAll()
     }
 }

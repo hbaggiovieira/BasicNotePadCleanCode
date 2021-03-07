@@ -17,5 +17,6 @@
         android:id="@+id/addNoteFragment"
         android:name="com.example.basicnotepad.home.ui.AddNoteFragment"
         android:label="fragment_add_note"
-        tools:layout="@layout/fragment_add_note" />
+        tools:layout="@layout/fragment_add_note">
+    </fragment>
 </navigation>
