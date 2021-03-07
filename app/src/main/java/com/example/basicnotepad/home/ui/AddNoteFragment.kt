@@ -33,15 +33,16 @@ class AddNoteFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupViews()
         setupButtons()
-        loadData()
         observe()
+        loadData()
     }
 
     private fun setupButtons() {
         fabSaveNote.setOnClickListener {
+            val id = args.noteId
             val description = edtTxtNote.text.toString()
 
-            sharedViewModel.save(description)
+            sharedViewModel.save(id, description)
 
             requireActivity().onBackPressed()
         }
