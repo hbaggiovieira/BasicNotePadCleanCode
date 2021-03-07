@@ -60,14 +60,14 @@ class AddNoteFragment : Fragment() {
     }
 
     private fun observe() {
-        sharedViewModel.saveNote.observe(requireActivity(), Observer {
+        sharedViewModel.saveNote.observe(viewLifecycleOwner, Observer {
             if (it) {
                 Toast.makeText(requireContext(), "Sucesso :D !", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(requireContext(), "Falha! D: !", Toast.LENGTH_SHORT).show()
             }
         })
-        sharedViewModel.note.observe(requireActivity(), Observer {
+        sharedViewModel.note.observe(viewLifecycleOwner, Observer {
             if (it.description.isNullOrEmpty()) {
                 edtTxtNote.setText("")
             } else {
