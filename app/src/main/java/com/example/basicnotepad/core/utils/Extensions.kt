@@ -8,6 +8,7 @@ import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
 
 fun ConstraintSet.match(view: View, parentView: View) {
     this.connect(view.id, ConstraintSet.TOP, parentView.id, ConstraintSet.TOP)
@@ -31,6 +32,10 @@ fun Activity.lockScreen(lockScreen: Boolean) {
         window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
         window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE)
     }
+}
+
+inline fun <T> Fragment.observe(liveData: LiveData<T>, crossinline onChanged: (T) -> Unit) {
+    liveData.observe(viewLifecycleOwner, androidx.lifecycle.Observer { onChanged(it) })
 }
 
 fun Fragment.lockScreen(lockScreen: Boolean) {

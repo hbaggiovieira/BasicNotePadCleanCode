@@ -1,4 +1,4 @@
-package com.example.basicnotepad.home.ui
+package com.example.basicnotepad.home.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.basicnotepad.R
 import com.example.basicnotepad.core.repository.SharedPreferencesRepository
+import com.example.basicnotepad.core.utils.observe
 import com.example.basicnotepad.home.HomeSharedViewModel
+import com.example.basicnotepad.home.recycler_view.NotesListAdapter
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.layout_dafault_toolbar.view.*
@@ -19,6 +21,10 @@ class HomeFragment : Fragment() {
 
     private val pref by lazy {
        SharedPreferencesRepository(requireContext())
+    }
+
+    private val recyclerViewAdapter by lazy (LazyThreadSafetyMode.NONE) {
+        NotesListAdapter()
     }
 
     private val navigator get() = findNavController()
@@ -47,6 +53,9 @@ class HomeFragment : Fragment() {
 
     private fun setupButtons() {
         fab.setOnClickListener {
+            observe(sharedViewModel.note){
+                recyclerViewAdapter.addList(it)
+            }
             navigator.navigate(R.id.action_homeFragment_to_addNoteFragment)
         }
     }
