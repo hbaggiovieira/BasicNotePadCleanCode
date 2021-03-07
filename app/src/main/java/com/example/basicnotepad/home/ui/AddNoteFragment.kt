@@ -22,9 +22,6 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 class AddNoteFragment : Fragment() {
     private val sharedViewModel by sharedViewModel<HomeSharedViewModel>()
 
-    private var mNoteId: Int = 0
-
-
     private val args by navArgs<AddNoteFragmentArgs>()
 
     override fun onCreateView(
@@ -51,7 +48,7 @@ class AddNoteFragment : Fragment() {
         fabSaveNote.setOnClickListener {
             hideKeyboard()
             val description = edtTxtNote.text.toString()
-            sharedViewModel.save(mNoteId, description)
+            sharedViewModel.save(args.noteId, description)
             requireActivity().onBackPressed()
         }
     }
