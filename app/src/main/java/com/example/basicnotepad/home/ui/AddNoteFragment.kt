@@ -60,7 +60,7 @@ class AddNoteFragment : Fragment() {
             edtTxtNote.setBackgroundColor(color)
         }
         fabSetBlue.setOnClickListener {
-            val color = resources.getColor(R.color.yellowLabel)
+            val color = resources.getColor(R.color.blueLabel)
             sharedViewModel.saveColor(color)
             edtTxtNote.setBackgroundColor(color)
         }
