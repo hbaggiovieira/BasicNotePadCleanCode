@@ -20,6 +20,8 @@ class HomeSharedViewModel(application: Application) : AndroidViewModel(applicati
     private var mNote = MutableLiveData<Notes>()
     val note: LiveData<Notes> = mNote
 
+    var colorId = MutableLiveData<Int>()
+
     fun save(isNew: Boolean, id: Int, description: String) {
         val note = Notes(description, id)
         if (isNew) {
@@ -27,6 +29,10 @@ class HomeSharedViewModel(application: Application) : AndroidViewModel(applicati
         } else {
             mSaveNote.value = mNotesRepository.update(note)
         }
+    }
+
+    fun saveColor(colorId: Int) {
+        mNotesRepository.saveColor(colorId)
     }
 
     fun delete (id: Int) {

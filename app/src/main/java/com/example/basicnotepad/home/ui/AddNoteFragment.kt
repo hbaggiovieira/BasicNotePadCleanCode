@@ -1,7 +1,6 @@
 package com.example.basicnotepad.home.ui
 
 import android.os.Bundle
-import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,12 +10,10 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.example.basicnotepad.R
 import com.example.basicnotepad.core.utils.hideKeyboard
-import com.example.basicnotepad.core.utils.lockScreen
 import com.example.basicnotepad.home.HomeSharedViewModel
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_add_note.*
 import kotlinx.android.synthetic.main.layout_dafault_toolbar.view.*
-import kotlinx.android.synthetic.main.note_list_item.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class AddNoteFragment : Fragment() {
@@ -48,8 +45,24 @@ class AddNoteFragment : Fragment() {
         fabSaveNote.setOnClickListener {
             hideKeyboard()
             val description = edtTxtNote.text.toString()
-            sharedViewModel.save(args.isNew, args.noteId, description)
             requireActivity().onBackPressed()
+        }
+        fabSetRed.setOnClickListener {
+            val color = resources.getColor(R.color.redLabel)
+            edtTxtNote.setBackgroundColor(color)
+        }
+        fabSetGreen.setOnClickListener {
+            val color = resources.getColor(R.color.greenLabel)
+            edtTxtNote.setBackgroundColor(color)
+        }
+        fabSetYellow.setOnClickListener {
+            val color = resources.getColor(R.color.yellowLabel)
+            edtTxtNote.setBackgroundColor(color)
+        }
+        fabSetBlue.setOnClickListener {
+            val color = resources.getColor(R.color.yellowLabel)
+            sharedViewModel.saveColor(color)
+            edtTxtNote.setBackgroundColor(color)
         }
     }
 

@@ -8,6 +8,7 @@ class DataBaseConstants private constructor(){
         object COLUMNS {
             const val ID = "id"
             const val DESCRIPTION = "description"
+            const val COLOR_ID = "colorId"
         }
     }
 

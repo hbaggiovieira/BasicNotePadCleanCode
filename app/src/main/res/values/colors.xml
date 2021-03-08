@@ -10,4 +10,11 @@
     <color name="shadow">#0DFFFFFF</color>
     <color name="white">#FFFFFFFF</color>
     <color name="brand_1">#3B5023</color>
+    <color name="brand_2">#7C6646</color>
+    <color name="brand_3">#2E1C02</color>
+    <color name="redLabel">#780505</color>
+    <color name="greenLabel">#3B5023</color>
+    <color name="yellowLabel">#FFE500</color>
+    <color name="blueLabel">#00BCD4</color>
+    <color name="purpleLabel">#450093</color>
 </resources>
