@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/default_spacing_very_small"
-        android:backgroundTint="@color/purpleLabel"
+        android:backgroundTint="@color/brand_2"
         android:contentDescription="Save Note"
         android:src="@drawable/ic_baseline_add_24"
         android:text="Save"
