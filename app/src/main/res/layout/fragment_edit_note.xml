@@ -5,8 +5,8 @@
     android:id="@+id/addNoteFragmentLayoutId"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/brand_3"
-    tools:context=".home.ui.AddNoteFragment">
+    android:background="@color/brand_1"
+    tools:context=".home.ui.edit_note.EditNoteFragment">
 
     <EditText
         android:id="@+id/edtTxtNote"

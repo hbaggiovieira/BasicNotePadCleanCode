@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/brand_3"
+    android:background="@color/brand_1"
     tools:context=".home.ui.home.HomeFragment">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -25,8 +25,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"
-        android:backgroundTint="@color/purpleLabel"
+        app:borderWidth="0dp"
+        app:rippleColor="@color/brand_2"
+        android:backgroundTint="@color/brand_3"
         android:contentDescription="Add Note"
+        android:elevation="0dp"
         android:src="@drawable/ic_baseline_add_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

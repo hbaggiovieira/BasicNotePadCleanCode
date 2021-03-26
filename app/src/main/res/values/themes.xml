@@ -17,6 +17,8 @@
     <style name="Theme.BasicNotePad.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">#85584a</item>
+        <item name="android:windowBackground">@color/brand_1</item>
     </style>
 
     <style name="Theme.BasicNotePad.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

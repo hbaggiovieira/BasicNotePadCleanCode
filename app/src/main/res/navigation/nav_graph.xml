@@ -11,13 +11,13 @@
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_addNoteFragment"
-            app:destination="@id/addNoteFragment" />
+            app:destination="@id/editNoteFragment" />
     </fragment>
     <fragment
-        android:id="@+id/addNoteFragment"
-        android:name="com.example.basicnotepad.home.ui.AddNoteFragment"
+        android:id="@+id/editNoteFragment"
+        android:name="com.example.basicnotepad.home.ui.edit_note.EditNoteFragment"
         android:label="fragment_add_note"
-        tools:layout="@layout/fragment_add_note">
+        tools:layout="@layout/fragment_edit_note">
         <argument
             android:name="isNew"
             app:argType="boolean"/>
