@@ -56,18 +56,22 @@ class EditNoteFragment : Fragment() {
         fabSetRed.setOnClickListener {
             color = resources.getColor(R.color.redLabel)
             edtTxtNote.setBackgroundColor(color!!)
+            edtTxtNote.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
         }
         fabSetGreen.setOnClickListener {
             color = resources.getColor(R.color.greenLabel)
             edtTxtNote.setBackgroundColor(color!!)
+            edtTxtNote.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
         }
         fabSetYellow.setOnClickListener {
             color = resources.getColor(R.color.yellowLabel)
             edtTxtNote.setBackgroundColor(color!!)
+            edtTxtNote.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
         }
         fabSetBlue.setOnClickListener {
             color = resources.getColor(R.color.blueLabel)
             edtTxtNote.setBackgroundColor(color!!)
+            edtTxtNote.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
         }
     }
 
@@ -87,6 +91,10 @@ class EditNoteFragment : Fragment() {
             }
         })
         sharedViewModel.note.observe(viewLifecycleOwner, Observer {
+            if (it.colorId == ContextCompat.getColor(requireContext(), R.color.yellowLabel) || it.colorId == ContextCompat.getColor(requireContext(), R.color.blueLabel)) {
+                edtTxtNote.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+            } else edtTxtNote.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+
             edtTxtNote.setBackgroundColor(it.colorId)
 
             if (it.description.isNullOrEmpty()) {
