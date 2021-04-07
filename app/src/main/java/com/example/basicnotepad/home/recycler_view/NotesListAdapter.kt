@@ -44,6 +44,8 @@ class NotesListAdapter : RecyclerView.Adapter<NotesListAdapter.ViewHolder>() {
 
         fun bind(note: Notes) {
             itemView.txtNoteDescription.text = note.description
+            //ToDo Melhorar visualizacao
+            itemView.setBackgroundColor(note.colorId)
 
             itemView.txtNoteDescription.setOnClickListener {
                 listener.onClick(note.id)
