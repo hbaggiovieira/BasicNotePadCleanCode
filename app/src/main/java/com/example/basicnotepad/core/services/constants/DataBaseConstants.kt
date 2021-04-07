@@ -3,7 +3,7 @@ package com.example.basicnotepad.core.services.constants
 class DataBaseConstants private constructor(){
 
     object NOTE {
-        const val TABLE_NAME = "Note"
+        const val TABLE_NAME = "Notes"
 
         object COLUMNS {
             const val ID = "id"

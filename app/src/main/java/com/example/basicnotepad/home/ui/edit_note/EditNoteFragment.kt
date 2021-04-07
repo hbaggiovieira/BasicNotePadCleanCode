@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
@@ -37,6 +38,10 @@ class EditNoteFragment : Fragment() {
     }
 
     private fun setupViews() {
+        if (args.noteBackgroundColor != 0) {
+            edtTxtNote.setBackgroundColor(args.noteBackgroundColor)
+        }
+
         requireActivity().toolbar.titleLabel.text =
             getString(R.string.title_label_add_note_fragment)
     }
@@ -45,7 +50,8 @@ class EditNoteFragment : Fragment() {
         fabSaveNote.setOnClickListener {
             hideKeyboard()
             val description = edtTxtNote.text.toString()
-            sharedViewModel.save(args.isNew, args.noteId, description)
+            val color = ContextCompat.getColor(requireContext(), R.color.redLabel)
+            sharedViewModel.save(args.isNew, args.noteId, description, color)
             requireActivity().onBackPressed()
         }
         fabSetRed.setOnClickListener {
@@ -62,7 +68,6 @@ class EditNoteFragment : Fragment() {
         }
         fabSetBlue.setOnClickListener {
             val color = resources.getColor(R.color.blueLabel)
-            sharedViewModel.saveColor(color)
             edtTxtNote.setBackgroundColor(color)
         }
     }

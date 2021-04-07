@@ -22,8 +22,8 @@ class HomeSharedViewModel(application: Application) : AndroidViewModel(applicati
 
     var colorId = MutableLiveData<Int>()
 
-    fun save(isNew: Boolean, id: Int, description: String) {
-        val note = Notes(description, id)
+    fun save(isNew: Boolean, id: Int, description: String, color: Int) {
+        val note = Notes(description, id, color)
         if (isNew) {
             mSaveNote.value = mNotesRepository.save(note)
         } else {

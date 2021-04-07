@@ -25,7 +25,7 @@ class NotesRepository private constructor(context: Context) {
         return try {
             val db = mNoteDataBaseHelper.readableDatabase
 
-            val projection = arrayOf(DataBaseConstants.NOTE.COLUMNS.DESCRIPTION)
+            val projection = arrayOf(DataBaseConstants.NOTE.COLUMNS.DESCRIPTION, DataBaseConstants.NOTE.COLUMNS.COLOR_ID)
             val selection = DataBaseConstants.NOTE.COLUMNS.ID + " = ?"
             val args = arrayOf(id.toString())
 
@@ -42,7 +42,9 @@ class NotesRepository private constructor(context: Context) {
 
                 val description =
                     cursor.getString(cursor.getColumnIndex(DataBaseConstants.NOTE.COLUMNS.DESCRIPTION))
-                notes = Notes(description, id)
+                val color =
+                    cursor.getInt(cursor.getColumnIndex(DataBaseConstants.NOTE.COLUMNS.COLOR_ID))
+                notes = Notes(description, id, color)
             }
             cursor?.close()
             notes
@@ -71,6 +73,7 @@ class NotesRepository private constructor(context: Context) {
 
             val contentValues = ContentValues()
             contentValues.put(DataBaseConstants.NOTE.COLUMNS.DESCRIPTION, notes.description)
+            contentValues.put(DataBaseConstants.NOTE.COLUMNS.COLOR_ID, notes.colorId)
             db.insert(DataBaseConstants.NOTE.TABLE_NAME, null, contentValues)
             true
         } catch (e: Exception) {
@@ -86,7 +89,7 @@ class NotesRepository private constructor(context: Context) {
 
             val contentValues = ContentValues()
             contentValues.put(DataBaseConstants.NOTE.COLUMNS.DESCRIPTION, notes.description)
-
+            contentValues.put(DataBaseConstants.NOTE.COLUMNS.COLOR_ID, notes.colorId)
             db.update(DataBaseConstants.NOTE.TABLE_NAME, contentValues, selection, args)
             true
         } catch (e: Exception) {
@@ -114,7 +117,8 @@ class NotesRepository private constructor(context: Context) {
 
             val projection = arrayOf(
                 DataBaseConstants.NOTE.COLUMNS.DESCRIPTION,
-                DataBaseConstants.NOTE.COLUMNS.ID
+                DataBaseConstants.NOTE.COLUMNS.ID,
+                DataBaseConstants.NOTE.COLUMNS.COLOR_ID
             )
 
             val cursor = db.query(
@@ -130,7 +134,9 @@ class NotesRepository private constructor(context: Context) {
                     val id = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.NOTE.COLUMNS.ID))
                     val description =
                         cursor.getString(cursor.getColumnIndex(DataBaseConstants.NOTE.COLUMNS.DESCRIPTION))
-                    val notes = Notes(description, id)
+                    val color =
+                        cursor.getInt(cursor.getColumnIndex(DataBaseConstants.NOTE.COLUMNS.COLOR_ID))
+                    val notes = Notes(description, id, color)
                     list.add(notes)
                 }
             }

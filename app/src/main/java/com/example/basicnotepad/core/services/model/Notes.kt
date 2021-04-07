@@ -5,5 +5,6 @@ import android.os.Parcelable
 
 data class Notes (
     var description: String,
-    val id: Int = 0
+    val id: Int = 0,
+    var colorId: Int
 )

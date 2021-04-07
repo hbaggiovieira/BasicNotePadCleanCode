@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -53,13 +54,15 @@ class HomeFragment : Fragment() {
     private fun setupButtons() {
         fab.setOnClickListener {
             hideKeyboard()
-            navigator.navigate(HomeFragmentDirections.actionHomeFragmentToAddNoteFragment(true, id))
+            navigator.navigate(HomeFragmentDirections.actionHomeFragmentToAddNoteFragment(true, id, 0))
         }
     }
 
     private fun setupRecycler() {
         //obter a recycler
         val recyclerView = recyclerNotes
+
+        val testColor = ContextCompat.getColor(requireContext(), R.color.brand_3)
 
         //definir um adapter
         recyclerView.adapter = mAdapter
@@ -71,7 +74,7 @@ class HomeFragment : Fragment() {
             override fun onClick(id: Int) {
                 hideKeyboard()
                 navigator.navigate(
-                    HomeFragmentDirections.actionHomeFragmentToAddNoteFragment(false, id)
+                    HomeFragmentDirections.actionHomeFragmentToAddNoteFragment(false, id, testColor)
                 )
             }
 

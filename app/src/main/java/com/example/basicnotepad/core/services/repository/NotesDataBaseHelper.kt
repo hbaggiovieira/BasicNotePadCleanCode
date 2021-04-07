@@ -20,6 +20,7 @@ class NotesDataBaseHelper (context: Context) : SQLiteOpenHelper (context, DATABA
 
         private const val CREATE_TABLE_NOTE = ("create table " + DataBaseConstants.NOTE.TABLE_NAME + " ("
                 + DataBaseConstants.NOTE.COLUMNS.ID + " integer primary key autoincrement, "
-                + DataBaseConstants.NOTE.COLUMNS.DESCRIPTION + " text);")
+                + DataBaseConstants.NOTE.COLUMNS.DESCRIPTION + " text, "
+                + DataBaseConstants.NOTE.COLUMNS.COLOR_ID + " integer);")
     }
 }
