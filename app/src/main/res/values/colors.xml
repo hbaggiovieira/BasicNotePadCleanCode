@@ -12,9 +12,9 @@
     <color name="brand_1">#332520</color>
     <color name="brand_2">#85584a</color>
     <color name="brand_3">#FFFCC6</color>
-    <color name="redLabel">#780505</color>
-    <color name="greenLabel">#3B5023</color>
-    <color name="yellowLabel">#FFE500</color>
-    <color name="blueLabel">#00BCD4</color>
+    <color name="redLabel">#BD0000</color>
+    <color name="greenLabel">#3A9A00</color>
+    <color name="yellowLabel">#92FFC800</color>
+    <color name="blueLabel">#002AFF</color>
     <color name="purpleLabel">#450093</color>
 </resources>

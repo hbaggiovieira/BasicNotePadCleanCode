@@ -1,5 +1,7 @@
 package com.example.basicnotepad.home.ui.edit_note
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +18,7 @@ import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_edit_note.*
 import kotlinx.android.synthetic.main.layout_dafault_toolbar.view.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+
 
 class EditNoteFragment : Fragment() {
     private val sharedViewModel by sharedViewModel<HomeSharedViewModel>()
@@ -49,30 +52,33 @@ class EditNoteFragment : Fragment() {
         fabSaveNote.setOnClickListener {
             hideKeyboard()
             val description = edtTxtNote.text.toString()
-            val defaultColor = ContextCompat.getColor(requireContext(), R.color.redLabel)
-            sharedViewModel.save(args.isNew, args.noteId, description, color ?: defaultColor)
+            val defaultColor = ContextCompat.getColor(requireContext(), R.color.shadow)
+            sharedViewModel.save(args.isNew, args.noteId, description, color ?: test())
             requireActivity().onBackPressed()
         }
         fabSetRed.setOnClickListener {
             color = resources.getColor(R.color.redLabel)
             edtTxtNote.setBackgroundColor(color!!)
-            edtTxtNote.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
         }
         fabSetGreen.setOnClickListener {
             color = resources.getColor(R.color.greenLabel)
             edtTxtNote.setBackgroundColor(color!!)
-            edtTxtNote.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
         }
         fabSetYellow.setOnClickListener {
             color = resources.getColor(R.color.yellowLabel)
             edtTxtNote.setBackgroundColor(color!!)
-            edtTxtNote.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
         }
         fabSetBlue.setOnClickListener {
             color = resources.getColor(R.color.blueLabel)
             edtTxtNote.setBackgroundColor(color!!)
-            edtTxtNote.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
         }
+    }
+
+    private fun test(): Int {
+        var color: Int = Color.TRANSPARENT
+        val background = edtTxtNote.background
+        if (background is ColorDrawable) color = background.color
+        return color
     }
 
     private fun loadData() {
