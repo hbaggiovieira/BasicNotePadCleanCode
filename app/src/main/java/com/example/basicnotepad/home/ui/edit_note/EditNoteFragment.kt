@@ -52,8 +52,7 @@ class EditNoteFragment : Fragment() {
         fabSaveNote.setOnClickListener {
             hideKeyboard()
             val description = edtTxtNote.text.toString()
-            val defaultColor = ContextCompat.getColor(requireContext(), R.color.shadow)
-            sharedViewModel.save(args.isNew, args.noteId, description, color ?: test())
+            sharedViewModel.save(args.isNew, args.noteId, description, color ?: getDefaultColor())
             requireActivity().onBackPressed()
         }
         fabSetRed.setOnClickListener {
@@ -74,7 +73,7 @@ class EditNoteFragment : Fragment() {
         }
     }
 
-    private fun test(): Int {
+    private fun getDefaultColor(): Int {
         var color: Int = Color.TRANSPARENT
         val background = edtTxtNote.background
         if (background is ColorDrawable) color = background.color
