@@ -88,18 +88,7 @@ class EditNoteFragment : Fragment() {
     }
 
     private fun observe() {
-        sharedViewModel.saveNote.observe(viewLifecycleOwner, Observer {
-            if (it) {
-                Toast.makeText(requireContext(), "Sucesso :D !", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(requireContext(), "Falha! D: !", Toast.LENGTH_SHORT).show()
-            }
-        })
         sharedViewModel.note.observe(viewLifecycleOwner, Observer {
-            if (it.colorId == ContextCompat.getColor(requireContext(), R.color.yellowLabel) || it.colorId == ContextCompat.getColor(requireContext(), R.color.blueLabel)) {
-                edtTxtNote.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
-            } else edtTxtNote.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
-
             edtTxtNote.setBackgroundColor(it.colorId)
 
             if (it.description.isNullOrEmpty()) {
