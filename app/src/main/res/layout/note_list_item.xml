@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/shadow">
+    android:background="@color/shadow"
+    android:padding="4dp">
 
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -20,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Test text for long description note, what happens with layout? We gonna checkout."
-        tools:textColor="@color/black" />
+        tools:background="@color/blueLabel" />
 
     <View
         android:layout_width="match_parent"
