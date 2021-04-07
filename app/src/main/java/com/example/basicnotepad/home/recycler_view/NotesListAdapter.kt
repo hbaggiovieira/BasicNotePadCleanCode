@@ -51,7 +51,6 @@ class NotesListAdapter : RecyclerView.Adapter<NotesListAdapter.ViewHolder>() {
                 listener.onClick(note.id)
             }
             itemView.txtNoteDescription.setOnLongClickListener {
-                itemView.setBackgroundResource(R.color.brand_2)
                 AlertDialog.Builder(itemView.context)
                     .setTitle(R.string.alert_dialog_delete_title)
                     .setMessage(R.string.alert_dialog_delete_message)
@@ -59,7 +58,6 @@ class NotesListAdapter : RecyclerView.Adapter<NotesListAdapter.ViewHolder>() {
                         listener.onDelete(note.id)
                     }
                     .setNeutralButton(R.string.alert_dialog_button_cancel) { _, _ ->
-                        itemView.setBackgroundResource(R.color.shadow)
                     }
                     .show()
                 true

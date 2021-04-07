@@ -11,19 +11,22 @@
         android:id="@+id/txtNoteDescription"
         android:layout_width="0dp"
         android:layout_height="45dp"
-        android:layout_margin="@dimen/default_spacing_very_small"
+        android:layout_marginHorizontal="@dimen/default_spacing_very_small"
+        android:layout_marginBottom="@dimen/default_spacing_very_small"
+        android:gravity="bottom"
         android:maxLength="99"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Test text for long description note, what happens with layout? We gonna checkout." />
+        tools:text="Test text for long description note, what happens with layout? We gonna checkout."
+        tools:textColor="@color/black" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/darker_gray"
-        app:layout_constraintBottom_toBottomOf="@id/txtNoteDescription"/>
+        app:layout_constraintBottom_toBottomOf="@id/txtNoteDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
