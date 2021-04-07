@@ -22,6 +22,9 @@ class EditNoteFragment : Fragment() {
 
     private val args by navArgs<EditNoteFragmentArgs>()
 
+    private var color: Int? = null
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,10 +41,6 @@ class EditNoteFragment : Fragment() {
     }
 
     private fun setupViews() {
-        if (args.noteBackgroundColor != 0) {
-            edtTxtNote.setBackgroundColor(args.noteBackgroundColor)
-        }
-
         requireActivity().toolbar.titleLabel.text =
             getString(R.string.title_label_add_note_fragment)
     }
@@ -50,25 +49,25 @@ class EditNoteFragment : Fragment() {
         fabSaveNote.setOnClickListener {
             hideKeyboard()
             val description = edtTxtNote.text.toString()
-            val color = ContextCompat.getColor(requireContext(), R.color.redLabel)
-            sharedViewModel.save(args.isNew, args.noteId, description, color)
+            val defaultColor = ContextCompat.getColor(requireContext(), R.color.redLabel)
+            sharedViewModel.save(args.isNew, args.noteId, description, color ?: defaultColor)
             requireActivity().onBackPressed()
         }
         fabSetRed.setOnClickListener {
-            val color = resources.getColor(R.color.redLabel)
-            edtTxtNote.setBackgroundColor(color)
+            color = resources.getColor(R.color.redLabel)
+            edtTxtNote.setBackgroundColor(color!!)
         }
         fabSetGreen.setOnClickListener {
-            val color = resources.getColor(R.color.greenLabel)
-            edtTxtNote.setBackgroundColor(color)
+            color = resources.getColor(R.color.greenLabel)
+            edtTxtNote.setBackgroundColor(color!!)
         }
         fabSetYellow.setOnClickListener {
-            val color = resources.getColor(R.color.yellowLabel)
-            edtTxtNote.setBackgroundColor(color)
+            color = resources.getColor(R.color.yellowLabel)
+            edtTxtNote.setBackgroundColor(color!!)
         }
         fabSetBlue.setOnClickListener {
-            val color = resources.getColor(R.color.blueLabel)
-            edtTxtNote.setBackgroundColor(color)
+            color = resources.getColor(R.color.blueLabel)
+            edtTxtNote.setBackgroundColor(color!!)
         }
     }
 
@@ -88,6 +87,8 @@ class EditNoteFragment : Fragment() {
             }
         })
         sharedViewModel.note.observe(viewLifecycleOwner, Observer {
+            edtTxtNote.setBackgroundColor(it.colorId)
+
             if (it.description.isNullOrEmpty()) {
                 edtTxtNote.setText("")
             } else {

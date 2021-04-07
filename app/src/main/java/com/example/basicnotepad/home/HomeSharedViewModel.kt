@@ -31,10 +31,6 @@ class HomeSharedViewModel(application: Application) : AndroidViewModel(applicati
         }
     }
 
-    fun saveColor(colorId: Int) {
-        mNotesRepository.saveColor(colorId)
-    }
-
     fun delete (id: Int) {
         mNotesRepository.delete(id)
     }

@@ -24,8 +24,5 @@
         <argument
             android:name="noteId"
             app:argType="integer"/>
-        <argument
-            android:name="noteBackgroundColor"
-            app:argType="integer" />
     </fragment>
 </navigation>

@@ -53,20 +53,6 @@ class NotesRepository private constructor(context: Context) {
         }
     }
 
-    fun saveColor(colorId: Int): Boolean {
-        return try {
-            val db = mNoteDataBaseHelper.writableDatabase
-            val contentValues = ContentValues()
-            contentValues.put(DataBaseConstants.NOTE.COLUMNS.COLOR_ID, colorId)
-            db.insert(DataBaseConstants.NOTE.TABLE_NAME, null, contentValues)
-            true
-        } catch (e: Exception) {
-            false
-        }
-
-    }
-
-
     fun save(notes: Notes): Boolean {
         return try {
             val db = mNoteDataBaseHelper.writableDatabase
