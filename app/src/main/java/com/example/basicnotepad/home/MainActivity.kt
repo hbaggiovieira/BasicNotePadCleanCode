@@ -6,7 +6,7 @@ import androidx.navigation.findNavController
 import com.example.basicnotepad.R
 import kotlinx.android.synthetic.main.activity_home.*
 
-class HomeActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     private val navController by lazy { findNavController(R.id.nav_host_home_fragment) }
 
