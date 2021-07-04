@@ -81,39 +81,27 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
             requireActivity().onBackPressed()
         }
         fabSetRed.setOnClickListener {
-            colorId = R.color.redLabel
+            colorId = ContextCompat.getColor(requireContext(), R.color.redLabel)
             edtTxtLayout.setBackgroundColor(
-                ContextCompat.getColor(
-                    requireContext(),
-                    colorId as Int
-                )
+                colorId!!
             )
         }
         fabSetGreen.setOnClickListener {
-            colorId = R.color.greenLabel
+            colorId = ContextCompat.getColor(requireContext(), R.color.greenLabel)
             edtTxtLayout.setBackgroundColor(
-                ContextCompat.getColor(
-                    requireContext(),
-                    colorId as Int
-                )
+                colorId!!
             )
         }
         fabSetYellow.setOnClickListener {
-            colorId = R.color.yellowLabel
+            colorId = ContextCompat.getColor(requireContext(), R.color.yellowLabel)
             edtTxtLayout.setBackgroundColor(
-                ContextCompat.getColor(
-                    requireContext(),
-                    colorId as Int
-                )
+                colorId!!
             )
         }
         fabSetBlue.setOnClickListener {
-            colorId = R.color.blueLabel
+            colorId = ContextCompat.getColor(requireContext(), R.color.blueLabel)
             edtTxtLayout.setBackgroundColor(
-                ContextCompat.getColor(
-                    requireContext(),
-                    colorId as Int
-                )
+                colorId!!
             )
         }
     }
