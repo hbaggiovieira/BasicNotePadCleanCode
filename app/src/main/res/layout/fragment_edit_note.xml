@@ -16,6 +16,7 @@
         android:gravity="center"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:layout_marginTop="@dimen/default_spacing_very_small"
         android:hint="@string/edt_text_title_hint"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
