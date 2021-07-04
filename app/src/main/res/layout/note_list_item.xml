@@ -4,20 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/noteListItemLayout"
     android:layout_width="match_parent"
-    android:layout_height="150dp">
+    android:layout_height="130dp">
 
     <TextView
         android:id="@+id/editNoteTitleLabel"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:background="@drawable/note_tab_background"
         android:gravity="center"
         android:paddingHorizontal="8dp"
         android:textAllCaps="true"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/txtNoteContent"
+        app:layout_constraintBottom_toTopOf="@+id/txtNoteContentLayout"
         app:layout_constraintEnd_toStartOf="@+id/homeDateLabel"
         app:layout_constraintHeight_percent=".25"
         app:layout_constraintHorizontal_bias="0.5"
@@ -31,7 +30,6 @@
         android:id="@+id/homeDateLabel"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:background="@drawable/note_tab_background"
         android:gravity="center"
         android:padding="4dp"
         android:textColor="@color/black"
@@ -45,20 +43,27 @@
         app:layout_constraintTop_toTopOf="@+id/editNoteTitleLabel"
         tools:text="03/07/2021" />
 
-    <TextView
-        android:id="@+id/txtNoteContent"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/default_spacing_small"
-        android:gravity="bottom"
-        android:maxLength="50"
-        android:padding="4dp"
-        android:textColor="@color/black"
-        android:textSize="14sp"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/txtNoteContentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editNoteTitleLabel"
-        tools:text="Test text for long description note, what happens with layout? We gonna checkout." />
+        app:layout_constraintTop_toBottomOf="@id/homeDateLabel">
+
+        <TextView
+            android:id="@+id/txtNoteContent"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/default_spacing_very_small"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Test text for long description note, what happens with layout? We gonna checkout. Test text for long description note, what happens with layout? We gonna checkout.Test text for long description note, what happens with layout? We gonna checkout.Test text for long description note, what happens with layout? We gonna checkout.Test text for long description note, what happens with layout? We gonna checkout." />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
