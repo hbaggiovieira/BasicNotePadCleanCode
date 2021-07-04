@@ -36,7 +36,7 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
             getString(R.string.title_label_add_note_fragment)
         editNoteTitleLabel.setText(title)
         if (!isNew) {
-            edtTxtNote.setText(repository.getByTitle(title).title)
+            edtTxtNote.setText(repository.getByTitle(title).content)
             edtTxtLayout.setBackgroundColor(repository.getByTitle(title).colorId)
         }
     }
@@ -49,8 +49,6 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
         }
         isNew = arguments?.getBoolean("isNew") ?: true
         title = arguments?.getString("title") ?: ""
-
-
     }
 
     private fun saveNote(note: NoteModel) {

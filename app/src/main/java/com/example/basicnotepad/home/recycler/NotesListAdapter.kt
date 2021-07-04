@@ -48,7 +48,8 @@ class NotesListAdapter(private val dataSet: List<NoteModel>) :
                 this.homeDateLabel.text = note.date
                 this.noteListItemLayout.setBackgroundColor(note.colorId)
                 this.txtNoteContent.apply {
-                    text = note.content
+                    val substring = note.content.substring(0, 47)
+                    "${substring}...".also { text = it }
                     setOnClickListener {
                         listener.onClick(note)
                     }

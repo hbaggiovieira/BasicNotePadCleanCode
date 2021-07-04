@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.basicnotepad.R
+import com.example.basicnotepad.core.database.dao.NotesDAO
 import com.example.basicnotepad.core.utils.hideKeyboard
 import com.example.basicnotepad.home.recycler.NotesListAdapter
 import com.example.basicnotepad.home.recycler.NotesListener
@@ -20,7 +21,7 @@ import kotlinx.android.synthetic.main.layout_dafault_toolbar.view.*
 
 class HomeFragment : Fragment() {
     private lateinit var mListener: NotesListener
-    private lateinit var notesRepository: NotesRepository
+    private lateinit var notesRepository: NotesDAO
     private lateinit var mAdapter: NotesListAdapter
 
     private val navigator get() = findNavController()
@@ -33,7 +34,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        notesRepository = NotesRepository.getDatabase(requireContext())
+        notesRepository = NotesRepository.getDatabase(requireContext()).notesDAO()
         setupButtons()
         setupViews()
     }
@@ -61,8 +62,7 @@ class HomeFragment : Fragment() {
     private fun setupRecycler() {
         //obter a recycler
         val recyclerView = recyclerNotes
-        val repository = NotesRepository.getDatabase(requireContext()).notesDAO()
-        mAdapter = NotesListAdapter(repository.getAll())
+        mAdapter = NotesListAdapter(notesRepository.getAll())
         //definir um adapter
         recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
@@ -80,7 +80,7 @@ class HomeFragment : Fragment() {
             }
 
             override fun onDelete(noteModel: NoteModel) {
-                notesRepository.notesDAO().delete(noteModel)
+                notesRepository.delete(noteModel)
                 updateViews()
             }
         }
