@@ -37,13 +37,12 @@ class NotesListAdapter (private val dataSet: List<NoteModel>) : RecyclerView.Ada
         RecyclerView.ViewHolder(itemView) {
 
         fun bind(note: NoteModel) {
-            val colorId = note.colorId
             with(itemView) {
                 this.editNoteTitleLabel.text = note.title
                 this.homeDateLabel.text = note.date
                 this.txtNoteContent.apply {
                     text = note.content
-                    setBackgroundColor(colorId)
+                    setBackgroundColor(note.colorId)
                     setOnClickListener {
                         listener.onClick(note)
                     }
