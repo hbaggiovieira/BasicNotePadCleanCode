@@ -2,11 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/noteListItemLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/shadow"
-    android:padding="4dp">
-
+    android:background="@drawable/note_tab_background"
+    android:padding="4dp"
+    tools:background="@color/blueLabel">
 
     <TextView
         android:id="@+id/editNoteTitleLabel"
@@ -15,6 +16,7 @@
         android:background="@drawable/note_tab_background"
         android:padding="4dp"
         android:textColor="@color/black"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="TITLE" />
@@ -24,8 +26,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/note_tab_background"
+        android:gravity="center"
         android:padding="4dp"
         android:textColor="@color/black"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="03/07/2021" />
@@ -34,14 +38,15 @@
         android:id="@+id/txtNoteContent"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_spacing_small"
         android:gravity="bottom"
         android:maxLength="99"
         android:padding="4dp"
         android:textColor="@color/white"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editNoteTitleLabel"
-        tools:background="@color/blueLabel"
         tools:text="Test text for long description note, what happens with layout? We gonna checkout." />
 
     <View

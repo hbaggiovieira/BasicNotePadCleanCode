@@ -9,7 +9,8 @@ import com.example.basicnotepad.R
 import com.example.basicnotepad.repository.model.NoteModel
 import kotlinx.android.synthetic.main.note_list_item.view.*
 
-class NotesListAdapter (private val dataSet: List<NoteModel>) : RecyclerView.Adapter<NotesListAdapter.ViewHolder>() {
+class NotesListAdapter(private val dataSet: List<NoteModel>) :
+    RecyclerView.Adapter<NotesListAdapter.ViewHolder>() {
 
     private lateinit var mListener: NotesListener
 
@@ -40,9 +41,9 @@ class NotesListAdapter (private val dataSet: List<NoteModel>) : RecyclerView.Ada
             with(itemView) {
                 this.editNoteTitleLabel.text = note.title
                 this.homeDateLabel.text = note.date
+                this.noteListItemLayout.setBackgroundColor(note.colorId)
                 this.txtNoteContent.apply {
                     text = note.content
-                    setBackgroundColor(note.colorId)
                     setOnClickListener {
                         listener.onClick(note)
                     }
