@@ -5,9 +5,9 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.basicnotepad.R
-import com.example.basicnotepad.repository.dao.NotesDAO
 import com.example.basicnotepad.core.utils.hideKeyboard
 import com.example.basicnotepad.repository.NotesRepository
+import com.example.basicnotepad.repository.dao.NotesDAO
 import com.example.basicnotepad.repository.model.NoteModel
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_edit_note.*
@@ -46,19 +46,18 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
     }
 
     private fun getArgs() {
+        isNew = arguments?.getBoolean("isNew") ?: true
+        title = arguments?.getString("title") ?: ""
         try {
             repository = NotesRepository.getDatabase(requireContext()).notesDAO()
+            colorId = repository.getByTitle(title).colorId
         } catch (e: Exception) {
             e.printStackTrace()
         }
-        isNew = arguments?.getBoolean("isNew") ?: true
-        title = arguments?.getString("title") ?: ""
     }
 
     private fun saveNote(note: NoteModel) {
-        val notesRepository = NotesRepository.getDatabase(requireContext()).notesDAO()
-
-        notesRepository.save(
+        repository.save(
             NoteModel(
                 note.title,
                 note.date,
