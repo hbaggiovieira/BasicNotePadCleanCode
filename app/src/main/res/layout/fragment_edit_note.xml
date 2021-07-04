@@ -42,7 +42,6 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="16dp"
                 android:hint="@string/edit_note_hint"
-                android:inputType="textCapWords"
                 android:padding="@dimen/default_spacing_medium"
                 android:textAlignment="textStart"
                 android:textColor="@color/black"
