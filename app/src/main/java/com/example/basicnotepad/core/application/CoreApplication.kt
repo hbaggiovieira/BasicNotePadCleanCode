@@ -7,7 +7,7 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 
-class CustomApplication: Application() {
+class CoreApplication: Application() {
     override fun onCreate() {
         super.onCreate()
 
@@ -17,10 +17,10 @@ class CustomApplication: Application() {
     private fun startKoin() {
         val appModules = mutableListOf(notesModule)
 
-        startKoin {
-            androidLogger(Level.ERROR)
-            androidContext(this@CustomApplication)
-            modules(appModules)
-        }
+//        startKoin {
+//            androidLogger(Level.ERROR)
+//            androidContext(this@CoreApplication)
+//            modules(appModules)
+//        }
     }
 }

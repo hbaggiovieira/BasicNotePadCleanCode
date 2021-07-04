@@ -6,22 +6,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/brand_1"
-    tools:context=".home.ui.edit_note.EditNoteFragment">
+    tools:context=".home.ui.notes.edit.EditNoteFragment">
 
     <EditText
-        android:id="@+id/edtTxtNote"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
-        android:background="@color/shadow"
-        android:gravity="top"
-        android:padding="32dp"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@id/fabSaveNote"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/editNoteTitleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/note_tab_background"
+        android:gravity="center"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Testando nota Testando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando nota" />
+        tools:text="TITLE" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginVertical="@dimen/default_spacing_small"
+        android:background="@color/shadow"
+        app:layout_constraintBottom_toTopOf="@id/fabSetRed"
+        app:layout_constraintTop_toBottomOf="@id/editNoteTitleLabel">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/edtTxtNote"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="16dp"
+                android:padding="@dimen/default_spacing_medium"
+                android:textAlignment="textStart"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Testando nota Testando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando nota Testando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando nota Testando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando nota Testando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando nota Testando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando notaTestando nota" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <Button
         android:id="@+id/fabSaveNote"

@@ -1,45 +1,20 @@
 package com.example.basicnotepad.home
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.basicnotepad.core.services.model.Notes
-import com.example.basicnotepad.core.services.repository.NotesRepository
+import androidx.lifecycle.ViewModel
+import com.example.basicnotepad.repository.NotesRepository
+import com.example.basicnotepad.repository.model.NoteModel
 
-class HomeSharedViewModel(application: Application) : AndroidViewModel(application) {
-    private val mContext = application.applicationContext
-    private val mNotesRepository: NotesRepository = NotesRepository.getInstance(mContext)
+class HomeSharedViewModel() : ViewModel() {
+    private val mRepository = NotesRepository
 
-    private var mSaveNote = MutableLiveData<Boolean>()
-    val saveNote: LiveData<Boolean> = mSaveNote
 
-    private val mNoteList = MutableLiveData<List<Notes>>()
-    val noteList: LiveData<List<Notes>> = mNoteList
+    private val mList = MutableLiveData<List<NoteModel>>()
+    var notes: LiveData<List<NoteModel>> = mList
 
-    private var mNote = MutableLiveData<Notes>()
-    val note: LiveData<Notes> = mNote
-
-    var colorId = MutableLiveData<Int>()
-
-    fun save(isNew: Boolean, id: Int, description: String, color: Int) {
-        val note = Notes(description, id, color)
-        if (isNew) {
-            mSaveNote.value = mNotesRepository.save(note)
-        } else {
-            mSaveNote.value = mNotesRepository.update(note)
-        }
-    }
-
-    fun delete (id: Int) {
-        mNotesRepository.delete(id)
-    }
-
-    fun load() {
-        mNoteList.value = mNotesRepository.getAll()
-    }
-
-    fun loadNote(id: Int) {
-        mNote.value = mNotesRepository.get(id)
+    fun list(context: Context) {
+        mList.postValue(mRepository.getDatabase(context).notesDAO().getAll())
     }
 }

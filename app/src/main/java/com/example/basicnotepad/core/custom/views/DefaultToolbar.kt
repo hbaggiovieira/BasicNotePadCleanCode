@@ -1,4 +1,4 @@
-package com.example.basicnotepad.core.custom_views
+package com.example.basicnotepad.core.custom.views
 
 import android.content.Context
 import android.os.Build

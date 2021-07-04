@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/brand_1">
 
-    <com.example.basicnotepad.core.custom_views.DefaultToolbar
+    <com.example.basicnotepad.core.custom.views.DefaultToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
