@@ -16,7 +16,7 @@
     <color name="brand_3">#332520</color>
     <color name="redLabel">#FF7C7C</color>
     <color name="greenLabel">#C7F4AC</color>
-    <color name="yellowLabel">#92FBE79E</color>
+    <color name="yellowLabel">#FBE79E</color>
     <color name="blueLabel">#B8C3FF</color>
     <color name="purpleLabel">#450093</color>
 </resources>
