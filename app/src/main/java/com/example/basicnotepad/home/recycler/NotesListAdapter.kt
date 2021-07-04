@@ -13,6 +13,7 @@ class NotesListAdapter(private val dataSet: List<NoteModel>) :
     RecyclerView.Adapter<NotesListAdapter.ViewHolder>() {
 
     private lateinit var mListener: NotesListener
+    private var mList: List<NoteModel> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =
@@ -33,6 +34,10 @@ class NotesListAdapter(private val dataSet: List<NoteModel>) :
         mListener = listener
     }
 
+    fun updateList(list: List<NoteModel>) {
+        mList = list
+        notifyDataSetChanged()
+    }
 
     inner class ViewHolder(itemView: View, private val listener: NotesListener) :
         RecyclerView.ViewHolder(itemView) {

@@ -10,7 +10,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.basicnotepad.R
 import com.example.basicnotepad.core.utils.hideKeyboard
-import com.example.basicnotepad.home.HomeSharedViewModel
 import com.example.basicnotepad.home.recycler.NotesListAdapter
 import com.example.basicnotepad.home.recycler.NotesListener
 import com.example.basicnotepad.repository.NotesRepository
@@ -18,7 +17,6 @@ import com.example.basicnotepad.repository.model.NoteModel
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.layout_dafault_toolbar.view.*
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class HomeFragment : Fragment() {
     private lateinit var mListener: NotesListener
@@ -47,6 +45,10 @@ class HomeFragment : Fragment() {
 
     private fun setupViews() {
         requireActivity().toolbar.titleLabel.text = getString(R.string.title_label_home_fragment)
+    }
+
+    private fun updateViews() {
+        setupRecycler()
     }
 
     private fun setupButtons() {
@@ -79,6 +81,7 @@ class HomeFragment : Fragment() {
 
             override fun onDelete(noteModel: NoteModel) {
                 notesRepository.notesDAO().delete(noteModel)
+                updateViews()
             }
         }
         mAdapter.attachListener(mListener)
