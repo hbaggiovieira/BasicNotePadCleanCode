@@ -1,13 +1,11 @@
 package com.example.basicnotepad.home.ui.notes.edit
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.basicnotepad.R
-import com.example.basicnotepad.core.database.dao.NotesDAO
+import com.example.basicnotepad.repository.dao.NotesDAO
 import com.example.basicnotepad.core.utils.hideKeyboard
 import com.example.basicnotepad.repository.NotesRepository
 import com.example.basicnotepad.repository.model.NoteModel

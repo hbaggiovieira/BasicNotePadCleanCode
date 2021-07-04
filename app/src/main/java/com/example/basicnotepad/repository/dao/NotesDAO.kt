@@ -1,4 +1,4 @@
-package com.example.basicnotepad.core.database.dao
+package com.example.basicnotepad.repository.dao
 
 import androidx.room.Dao
 import androidx.room.Delete

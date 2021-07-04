@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.basicnotepad.core.database.dao.NotesDAO
+import com.example.basicnotepad.repository.dao.NotesDAO
 import com.example.basicnotepad.repository.model.NoteModel
 
 @Database(entities = [NoteModel::class], version = 1)

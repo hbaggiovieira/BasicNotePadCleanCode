@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.basicnotepad.R
-import com.example.basicnotepad.core.database.dao.NotesDAO
+import com.example.basicnotepad.repository.dao.NotesDAO
 import com.example.basicnotepad.core.utils.hideKeyboard
 import com.example.basicnotepad.home.recycler.NotesListAdapter
 import com.example.basicnotepad.home.recycler.NotesListener
