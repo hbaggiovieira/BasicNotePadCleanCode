@@ -12,12 +12,13 @@
         android:id="@+id/editNoteTitleLabel"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_marginTop="@dimen/default_spacing_very_small"
         android:background="@drawable/note_tab_background"
         android:gravity="center"
+        android:hint="@string/edt_text_title_hint"
+        android:inputType="textCapCharacters"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_marginTop="@dimen/default_spacing_very_small"
-        android:hint="@string/edt_text_title_hint"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="TITLE" />
@@ -30,6 +31,7 @@
         android:background="@color/shadow"
         app:layout_constraintBottom_toTopOf="@id/fabSetRed"
         app:layout_constraintTop_toBottomOf="@id/editNoteTitleLabel">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -39,10 +41,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="16dp"
+                android:hint="@string/edit_note_hint"
+                android:inputType="textCapWords"
                 android:padding="@dimen/default_spacing_medium"
                 android:textAlignment="textStart"
                 android:textColor="@color/black"
-                android:hint="@string/edit_note_hint"
                 android:textColorHint="@color/dark_gray"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
