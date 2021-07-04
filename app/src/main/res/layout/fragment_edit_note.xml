@@ -28,6 +28,7 @@
         app:layout_constraintTop_toBottomOf="@id/editNoteTitleLabel">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/edtTxtLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

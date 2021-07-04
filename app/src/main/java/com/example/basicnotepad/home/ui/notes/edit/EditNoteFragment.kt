@@ -20,16 +20,28 @@ import java.util.*
 class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
 
     private var colorId: Int? = null
+    private var isNew = true
+    private var title = ""
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        getArgs()
         setupViews()
         setupButtons()
     }
 
     private fun setupViews() {
+        val repository = NotesRepository.getDatabase(requireContext()).notesDAO()
         requireActivity().toolbar.titleLabel.text =
             getString(R.string.title_label_add_note_fragment)
+        editNoteTitleLabel.setText(title)
+        edtTxtNote.setText(repository.getByTitle(title).title)
+        edtTxtLayout.setBackgroundColor(repository.getByTitle(title).colorId)
+    }
+
+    private fun getArgs () {
+        isNew = arguments?.getBoolean("isNew") ?: true
+        title = arguments?.getString("title") ?: ""
     }
 
     private fun saveNote(note: NoteModel) {
