@@ -1,4 +1,4 @@
-package com.example.basicnotepad.home.recycler
+package com.example.basicnotepad.home.ui.home.recycler
 
 import com.example.basicnotepad.repository.model.NoteModel
 

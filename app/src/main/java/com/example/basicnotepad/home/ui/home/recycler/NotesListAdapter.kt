@@ -1,4 +1,4 @@
-package com.example.basicnotepad.home.recycler
+package com.example.basicnotepad.home.ui.home.recycler
 
 import android.app.AlertDialog
 import android.view.LayoutInflater

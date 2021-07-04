@@ -9,6 +9,7 @@
     <color name="black">#FF000000</color>
     <color name="shadow">#0DFFFFFF</color>
     <color name="light_gray">#349C9C9C</color>
+    <color name="dark_gray">#474747</color>
     <color name="white">#FFFFFFFF</color>
     <color name="brand_1">#FFFCC6</color>
     <color name="brand_2">#85584a</color>
