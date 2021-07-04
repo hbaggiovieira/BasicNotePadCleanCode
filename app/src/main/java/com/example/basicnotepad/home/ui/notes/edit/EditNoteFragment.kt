@@ -106,11 +106,4 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
             )
         }
     }
-
-//    private fun getDefaultColor(): Int {
-//        var color: Int = Color.TRANSPARENT
-//        val background = edtTxtNote.background
-//        if (background is ColorDrawable) color = background.color
-//        return color
-//    }
 }
