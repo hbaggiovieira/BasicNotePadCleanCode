@@ -19,6 +19,12 @@ import java.util.*
 
 
 class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
+
+    companion object {
+        const val IS_NEW_TAG = "isNew"
+        const val TITLE_TAG = "title"
+    }
+
     private lateinit var repository: NotesDAO
     private var colorId: Int? = null
     private var isNew = true
@@ -37,7 +43,7 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
         editNoteTitleLabel.setText(title)
         if (!isNew) {
             edtTxtNote.setText(repository.getByTitle(title).content)
-            edtTxtLayout.setBackgroundColor(repository.getByTitle(title).colorId)
+            edtTxtNestedScrollView.setBackgroundColor(repository.getByTitle(title).colorId)
         }
     }
 
@@ -72,7 +78,7 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
                     editNoteTitleLabel.text.toString(),
                     formatter.format(Date()),
                     edtTxtNote.text.toString(),
-                    colorId ?: getDefaultColor()
+                    colorId ?: ContextCompat.getColor(requireContext(), R.color.light_gray)
                 )
             )
             hideKeyboard()
@@ -80,34 +86,34 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
         }
         fabSetRed.setOnClickListener {
             colorId = ContextCompat.getColor(requireContext(), R.color.redLabel)
-            edtTxtLayout.setBackgroundColor(
+            edtTxtNestedScrollView.setBackgroundColor(
                 colorId!!
             )
         }
         fabSetGreen.setOnClickListener {
             colorId = ContextCompat.getColor(requireContext(), R.color.greenLabel)
-            edtTxtLayout.setBackgroundColor(
+            edtTxtNestedScrollView.setBackgroundColor(
                 colorId!!
             )
         }
         fabSetYellow.setOnClickListener {
             colorId = ContextCompat.getColor(requireContext(), R.color.yellowLabel)
-            edtTxtLayout.setBackgroundColor(
+            edtTxtNestedScrollView.setBackgroundColor(
                 colorId!!
             )
         }
         fabSetBlue.setOnClickListener {
             colorId = ContextCompat.getColor(requireContext(), R.color.blueLabel)
-            edtTxtLayout.setBackgroundColor(
+            edtTxtNestedScrollView.setBackgroundColor(
                 colorId!!
             )
         }
     }
 
-    private fun getDefaultColor(): Int {
-        var color: Int = Color.TRANSPARENT
-        val background = edtTxtNote.background
-        if (background is ColorDrawable) color = background.color
-        return color
-    }
+//    private fun getDefaultColor(): Int {
+//        var color: Int = Color.TRANSPARENT
+//        val background = edtTxtNote.background
+//        if (background is ColorDrawable) color = background.color
+//        return color
+//    }
 }

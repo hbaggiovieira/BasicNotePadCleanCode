@@ -9,10 +9,15 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="title_label_add_note_fragment">Add Note Fragment</string>
-    <string name="title_label_home_fragment">Home Fragment</string>
+    <string name="title_label_add_note_fragment">Editar Anotação</string>
+    <string name="title_label_home_fragment">Suas Anotações</string>
     <string name="alert_dialog_delete_title">Remover</string>
     <string name="alert_dialog_delete_message">Deseja remover anotação?</string>
     <string name="alert_dialog_button_remove">Remover</string>
     <string name="alert_dialog_button_cancel">Cancelar</string>
+    <string name="content_description_add_note">Add Note</string>
+    <string name="edit_note_hint">Editar</string>
+    <string name="edt_text_title_hint">Título</string>
+    <string name="content_description_save_note">Save Note</string>
+    <string name="save">Salvar</string>
 </resources>

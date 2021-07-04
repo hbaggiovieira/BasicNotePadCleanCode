@@ -11,23 +11,24 @@
     <EditText
         android:id="@+id/editNoteTitleLabel"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/note_tab_background"
         android:gravity="center"
         android:textSize="24sp"
+        android:hint="@string/edt_text_title_hint"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHeight_percent="0.10"
         tools:text="TITLE" />
 
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/edtTxtLayout"
+        android:id="@+id/edtTxtNestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginVertical="@dimen/default_spacing_small"
         android:background="@color/shadow"
         app:layout_constraintBottom_toTopOf="@id/fabSetRed"
         app:layout_constraintTop_toBottomOf="@id/editNoteTitleLabel">
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -39,7 +40,8 @@
                 android:layout_marginBottom="16dp"
                 android:padding="@dimen/default_spacing_medium"
                 android:textAlignment="textStart"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
+                android:hint="@string/edit_note_hint"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -55,9 +57,10 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/default_spacing_very_small"
         android:backgroundTint="@color/brand_2"
-        android:contentDescription="Save Note"
+        android:contentDescription="@string/content_description_save_note"
         android:src="@drawable/ic_baseline_add_24"
-        android:text="Save"
+        android:text="@string/save"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

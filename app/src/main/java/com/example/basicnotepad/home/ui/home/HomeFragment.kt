@@ -7,17 +7,21 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.basicnotepad.R
 import com.example.basicnotepad.core.database.dao.NotesDAO
 import com.example.basicnotepad.core.utils.hideKeyboard
 import com.example.basicnotepad.home.recycler.NotesListAdapter
 import com.example.basicnotepad.home.recycler.NotesListener
+import com.example.basicnotepad.home.ui.notes.edit.EditNoteFragment.Companion.IS_NEW_TAG
+import com.example.basicnotepad.home.ui.notes.edit.EditNoteFragment.Companion.TITLE_TAG
 import com.example.basicnotepad.repository.NotesRepository
 import com.example.basicnotepad.repository.model.NoteModel
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.layout_dafault_toolbar.view.*
+
 
 class HomeFragment : Fragment() {
     private lateinit var mListener: NotesListener
@@ -60,21 +64,25 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupRecycler() {
-        //obter a recycler
         val recyclerView = recyclerNotes
         mAdapter = NotesListAdapter(notesRepository.getAll())
-        //definir um adapter
         recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = mAdapter
+            addItemDecoration(
+                DividerItemDecoration(
+                    context,
+                    DividerItemDecoration.VERTICAL
+                )
+            )
         }
 
         mListener = object : NotesListener {
             override fun onClick(noteModel: NoteModel) {
                 hideKeyboard()
                 val bundle = bundleOf(
-                    "isNew" to false,
-                    "title" to noteModel.title
+                    IS_NEW_TAG to false,
+                    TITLE_TAG to noteModel.title
                 )
                 navigator.navigate(R.id.editNoteFragment, bundle)
             }
