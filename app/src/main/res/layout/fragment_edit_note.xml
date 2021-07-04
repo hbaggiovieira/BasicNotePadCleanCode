@@ -15,6 +15,7 @@
         android:background="@drawable/note_tab_background"
         android:gravity="center"
         android:textSize="24sp"
+        android:textStyle="bold"
         android:hint="@string/edt_text_title_hint"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
