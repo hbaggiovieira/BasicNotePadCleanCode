@@ -37,6 +37,7 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
     }
 
     private fun setupViews() {
+        edtTxtNote.requestFocus()
         requireActivity().toolbar.titleLabel.text =
             getString(R.string.title_label_add_note_fragment)
         editNoteTitleLabel.setText(title)
