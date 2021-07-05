@@ -5,7 +5,6 @@ import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.basicnotepad.R
 import com.example.basicnotepad.repository.model.NoteModel
@@ -36,18 +35,15 @@ class NotesListAdapter(private val dataSet: List<NoteModel>) :
         mListener = listener
     }
 
-    fun updateList(list: List<NoteModel>) {
-        mList = list
-        notifyDataSetChanged()
-    }
-
     inner class ViewHolder(itemView: View, private val listener: NotesListener) :
         RecyclerView.ViewHolder(itemView) {
 
         fun bind(note: NoteModel) {
             with(itemView) {
-                this.editNoteTitleLabel.text = itemView.context.getString(R.string.title_label, note.title)
-                this.homeDateLabel.text = itemView.context.getString(R.string.last_update_date, note.date)
+                this.editNoteTitleLabel.text =
+                    itemView.context.getString(R.string.title_label, note.title)
+                this.homeDateLabel.text =
+                    itemView.context.getString(R.string.last_update_date, note.date)
                 this.noteListItemLayout.backgroundTintList = ColorStateList.valueOf(note.colorId)
                 this.txtNoteContent.apply {
                     val substring = if (note.content.length >= 90) {

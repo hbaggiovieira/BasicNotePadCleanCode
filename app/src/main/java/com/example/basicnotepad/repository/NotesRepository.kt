@@ -8,7 +8,7 @@ import com.example.basicnotepad.repository.dao.NotesDAO
 import com.example.basicnotepad.repository.model.NoteModel
 
 @Database(entities = [NoteModel::class], version = 1)
-abstract class NotesRepository() : RoomDatabase() {
+abstract class NotesRepository : RoomDatabase() {
 
     abstract fun notesDAO(): NotesDAO
 

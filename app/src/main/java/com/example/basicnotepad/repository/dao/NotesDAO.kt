@@ -21,6 +21,6 @@ interface NotesDAO {
     @Insert(onConflict = REPLACE)
     fun save(note: NoteModel)
 
-    @Delete ()
+    @Delete
     fun delete(note: NoteModel)
 }

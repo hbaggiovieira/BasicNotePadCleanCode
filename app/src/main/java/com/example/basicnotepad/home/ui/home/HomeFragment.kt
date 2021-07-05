@@ -5,32 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContextCompat
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.basicnotepad.R
-import com.example.basicnotepad.core.utils.hideKeyboard
-import com.example.basicnotepad.home.ui.home.recycler.NotesListAdapter
-import com.example.basicnotepad.home.ui.home.recycler.NotesListener
-import com.example.basicnotepad.home.ui.notes.edit.EditNoteFragment.Companion.IS_NEW_TAG
-import com.example.basicnotepad.home.ui.notes.edit.EditNoteFragment.Companion.NOTE_ID_TAG
-import com.example.basicnotepad.repository.NotesRepository
-import com.example.basicnotepad.repository.dao.NotesDAO
-import com.example.basicnotepad.repository.model.NoteModel
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.layout_dafault_toolbar.view.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class HomeFragment : Fragment() {
-    private lateinit var mListener: NotesListener
-    private lateinit var notesRepository: NotesDAO
-    private lateinit var mAdapter: NotesListAdapter
-    private var isDescending = true
-
     private val navigator get() = findNavController()
+    private val viewModel: HomeViewModel by viewModel()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,27 +27,22 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        notesRepository = NotesRepository.getDatabase(requireContext()).notesDAO()
         setupButtons()
-        setupViews()
+        setupToolbar()
     }
 
     override fun onResume() {
         super.onResume()
-        updateViews()
+        viewModel.updateViews(requireContext(), recyclerNotes, navigator)
     }
 
-    private fun setupViews() {
-        requireActivity().toolbar.rightIcon
+    private fun setupToolbar() {
         requireActivity().toolbar.apply {
             rightButtonClick = {
-                Toast.makeText(requireContext(), "Aasddsadsa", Toast.LENGTH_SHORT).show() }
+                Toast.makeText(requireContext(), "Aasddsadsa", Toast.LENGTH_SHORT).show()
+            }
             titleLabel.text = getString(R.string.title_label_home_fragment)
         }
-    }
-
-    private fun updateViews() {
-        setupRecycler(notesRepository.getAll())
     }
 
     private fun setupButtons() {
@@ -68,41 +50,7 @@ class HomeFragment : Fragment() {
             navigator.navigate(HomeFragmentDirections.actionHomeFragmentToAddNoteFragment(true))
         }
         buttonFilter.setOnClickListener {
-            if (isDescending) {
-                it.background = ContextCompat.getDrawable(requireContext(), R.drawable.ic_baseline_keyboard_arrow_up_24)
-                setupRecycler(notesRepository.getAllAsc())
-                isDescending = false
-            } else {
-                it.background = ContextCompat.getDrawable(requireContext(), R.drawable.ic_baseline_keyboard_arrow_down_24)
-                setupRecycler(notesRepository.getAll())
-                isDescending = true
-            }
+            viewModel.toggleFilterByDate(requireContext(), it, recyclerNotes, navigator)
         }
-    }
-
-    private fun setupRecycler(dataSet: List<NoteModel>) {
-        val recyclerView = recyclerNotes
-        mAdapter = NotesListAdapter(dataSet)
-        recyclerView.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = mAdapter
-        }
-
-        mListener = object : NotesListener {
-            override fun onClick(noteModel: NoteModel) {
-                hideKeyboard()
-                val bundle = bundleOf(
-                    IS_NEW_TAG to false,
-                    NOTE_ID_TAG to noteModel.noteId
-                )
-                navigator.navigate(R.id.editNoteFragment, bundle)
-            }
-
-            override fun onDelete(noteModel: NoteModel) {
-                notesRepository.delete(noteModel)
-                updateViews()
-            }
-        }
-        mAdapter.attachListener(mListener)
     }
 }
