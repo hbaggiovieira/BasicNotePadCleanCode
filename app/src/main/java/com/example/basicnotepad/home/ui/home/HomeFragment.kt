@@ -15,7 +15,7 @@ import com.example.basicnotepad.core.utils.hideKeyboard
 import com.example.basicnotepad.home.ui.home.recycler.NotesListAdapter
 import com.example.basicnotepad.home.ui.home.recycler.NotesListener
 import com.example.basicnotepad.home.ui.notes.edit.EditNoteFragment.Companion.IS_NEW_TAG
-import com.example.basicnotepad.home.ui.notes.edit.EditNoteFragment.Companion.TITLE_TAG
+import com.example.basicnotepad.home.ui.notes.edit.EditNoteFragment.Companion.NOTE_ID_TAG
 import com.example.basicnotepad.repository.NotesRepository
 import com.example.basicnotepad.repository.dao.NotesDAO
 import com.example.basicnotepad.repository.model.NoteModel
@@ -47,7 +47,7 @@ class HomeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        setupRecycler()
+        updateViews()
     }
 
     private fun setupViews() {
@@ -55,7 +55,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun updateViews() {
-        setupRecycler()
+        setupRecycler(notesRepository.getAll())
     }
 
     private fun setupButtons() {
@@ -69,13 +69,13 @@ class HomeFragment : Fragment() {
                 isDescending = false
             } else {
                 it.background = ContextCompat.getDrawable(requireContext(), R.drawable.ic_baseline_keyboard_arrow_down_24)
-                setupRecycler()
+                setupRecycler(notesRepository.getAll())
                 isDescending = true
             }
         }
     }
 
-    private fun setupRecycler(dataSet: List<NoteModel> = notesRepository.getAll()) {
+    private fun setupRecycler(dataSet: List<NoteModel>) {
         val recyclerView = recyclerNotes
         mAdapter = NotesListAdapter(dataSet)
         recyclerView.apply {
@@ -94,7 +94,7 @@ class HomeFragment : Fragment() {
                 hideKeyboard()
                 val bundle = bundleOf(
                     IS_NEW_TAG to false,
-                    TITLE_TAG to noteModel.title
+                    NOTE_ID_TAG to noteModel.id
                 )
                 navigator.navigate(R.id.editNoteFragment, bundle)
             }

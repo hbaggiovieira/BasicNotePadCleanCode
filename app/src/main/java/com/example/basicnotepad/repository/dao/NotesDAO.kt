@@ -15,11 +15,8 @@ interface NotesDAO {
     @Query("SELECT * FROM NoteModel ORDER BY date ASC")
     fun getAllAsc(): List<NoteModel>
 
-    @Query("SELECT * FROM NoteModel WHERE title = :title")
-    fun getByTitle(title: String): NoteModel
-
-    @Query("DELETE FROM NoteModel WHERE title = :title")
-    fun deleteByTitle(title: String)
+    @Query("SELECT * FROM NoteModel WHERE id = :id")
+    fun getById(id: Int): NoteModel
 
     @Insert(onConflict = REPLACE)
     fun save(note: NoteModel)
