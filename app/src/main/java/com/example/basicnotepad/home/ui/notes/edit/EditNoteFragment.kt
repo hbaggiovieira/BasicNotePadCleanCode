@@ -26,7 +26,7 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
     private lateinit var repository: NotesDAO
     private var colorId: Int? = null
     private var isNew = true
-    private var noteId = 0
+    private var noteId: Int? = null
     private var title = ""
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -41,18 +41,18 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
             getString(R.string.title_label_add_note_fragment)
         editNoteTitleLabel.setText(title)
         if (!isNew) {
-            edtTxtNote.setText(repository.getById(noteId).content)
-            edtTxtNestedScrollView.setBackgroundColor(repository.getById(noteId).colorId)
+            edtTxtNote.setText(repository.getById(noteId!!).content)
+            edtTxtNestedScrollView.setBackgroundColor(repository.getById(noteId!!).colorId)
         }
     }
 
     private fun getArgs() {
         isNew = arguments?.getBoolean("isNew") ?: true
-        noteId = arguments?.getInt(NOTE_ID_TAG) ?: 0
+        noteId = arguments?.getInt(NOTE_ID_TAG) ?: id
         try {
             repository = NotesRepository.getDatabase(requireContext()).notesDAO()
-            colorId = repository.getById(noteId).colorId
-            title = repository.getById(noteId).title
+            colorId = repository.getById(noteId!!).colorId
+            title = repository.getById(noteId!!).title
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -61,7 +61,7 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
     private fun saveNote(note: NoteModel) {
         repository.save(
             NoteModel(
-                noteId,
+                noteId!!,
                 note.title,
                 note.date,
                 note.content,
@@ -75,7 +75,7 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
             val formatter = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
             saveNote(
                 NoteModel(
-                    noteId,
+                    noteId!!,
                     editNoteTitleLabel.text.toString(),
                     formatter.format(Date()),
                     edtTxtNote.text.toString(),

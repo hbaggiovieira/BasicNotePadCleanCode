@@ -1,9 +1,11 @@
 package com.example.basicnotepad.home.ui.home.recycler
 
 import android.app.AlertDialog
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.basicnotepad.R
 import com.example.basicnotepad.repository.model.NoteModel
@@ -44,9 +46,9 @@ class NotesListAdapter(private val dataSet: List<NoteModel>) :
 
         fun bind(note: NoteModel) {
             with(itemView) {
-                this.editNoteTitleLabel.text = note.title
+                this.editNoteTitleLabel.text = itemView.context.getString(R.string.title_label, note.title)
                 this.homeDateLabel.text = itemView.context.getString(R.string.last_update_date, note.date)
-                this.noteListItemLayout.setBackgroundColor(note.colorId)
+                this.noteListItemLayout.backgroundTintList = ColorStateList.valueOf(note.colorId)
                 this.txtNoteContent.apply {
                     val substring = if (note.content.length >= 90) {
                         note.content.substring(0, 90)

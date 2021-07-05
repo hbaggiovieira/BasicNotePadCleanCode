@@ -21,4 +21,5 @@
     <string name="content_description_save_note">Save Note</string>
     <string name="save">Salvar</string>
     <string name="last_update_date">Última atualização: %s</string>
+    <string name="title_label">Título: %s</string>
 </resources>

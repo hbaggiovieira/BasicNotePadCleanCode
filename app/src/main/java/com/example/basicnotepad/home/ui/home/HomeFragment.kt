@@ -8,7 +8,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.basicnotepad.R
 import com.example.basicnotepad.core.utils.hideKeyboard
@@ -60,7 +59,7 @@ class HomeFragment : Fragment() {
 
     private fun setupButtons() {
         fab.setOnClickListener {
-            navigator.navigate(HomeFragmentDirections.actionHomeFragmentToAddNoteFragment(true, id))
+            navigator.navigate(HomeFragmentDirections.actionHomeFragmentToAddNoteFragment(true))
         }
         buttonFilter.setOnClickListener {
             if (isDescending) {
@@ -81,12 +80,6 @@ class HomeFragment : Fragment() {
         recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = mAdapter
-            addItemDecoration(
-                DividerItemDecoration(
-                    context,
-                    DividerItemDecoration.VERTICAL
-                )
-            )
         }
 
         mListener = object : NotesListener {
@@ -94,7 +87,7 @@ class HomeFragment : Fragment() {
                 hideKeyboard()
                 val bundle = bundleOf(
                     IS_NEW_TAG to false,
-                    NOTE_ID_TAG to noteModel.id
+                    NOTE_ID_TAG to noteModel.noteId
                 )
                 navigator.navigate(R.id.editNoteFragment, bundle)
             }

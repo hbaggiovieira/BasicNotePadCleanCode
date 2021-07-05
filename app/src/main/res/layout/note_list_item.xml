@@ -6,19 +6,20 @@
     android:layout_width="match_parent"
     android:layout_height="130dp"
     android:background="@drawable/note_tab_background"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:layout_marginVertical="@dimen/default_spacing_very_small">
 
     <TextView
         android:id="@+id/editNoteTitleLabel"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginStart="@dimen/default_spacing_very_small"
         android:gravity="center"
         android:textAllCaps="true"
         android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/homeDateLabel"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent=".25"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -26,15 +27,16 @@
 
     <TextView
         android:id="@+id/homeDateLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent=".25"
-        app:layout_constraintStart_toStartOf="@id/editNoteTitleLabel"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editNoteTitleLabel"
         tools:text="03/07/2021" />
 

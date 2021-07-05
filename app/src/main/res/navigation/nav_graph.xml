@@ -21,8 +21,5 @@
         <argument
             android:name="isNew"
             app:argType="boolean"/>
-        <argument
-            android:name="noteId"
-            app:argType="integer"/>
     </fragment>
 </navigation>
