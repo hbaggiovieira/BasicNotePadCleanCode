@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
@@ -50,7 +51,12 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupViews() {
-        requireActivity().toolbar.titleLabel.text = getString(R.string.title_label_home_fragment)
+        requireActivity().toolbar.rightIcon
+        requireActivity().toolbar.apply {
+            rightButtonClick = {
+                Toast.makeText(requireContext(), "Aasddsadsa", Toast.LENGTH_SHORT).show() }
+            titleLabel.text = getString(R.string.title_label_home_fragment)
+        }
     }
 
     private fun updateViews() {

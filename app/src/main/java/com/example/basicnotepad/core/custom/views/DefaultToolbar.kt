@@ -58,9 +58,8 @@ class  DefaultToolbar @JvmOverloads constructor(
             progress = getInt(R.styleable.DefaultToolbar_progress,0)
             fullProgressValue = getInt(R.styleable.DefaultToolbar_fullProgressValue,0)
             hasProgress = getBoolean(R.styleable.DefaultToolbar_hasProgress,true)
-            hasCloseButton = getBoolean(R.styleable.DefaultToolbar_hasCloseButton,false)
+            hasCloseButton = getBoolean(R.styleable.DefaultToolbar_hasCloseButton,true)
             hasBackButton = getBoolean(R.styleable.DefaultToolbar_hasBackButton,true)
-            rightIcon = getResourceId(R.styleable.DefaultToolbar_rightIcon, R.drawable.ic_image_close_white)
             recycle()
         }
 

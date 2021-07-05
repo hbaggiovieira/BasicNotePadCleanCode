@@ -38,7 +38,7 @@
             android:layout_height="@dimen/default_spacing_very_large"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="16dp"
-            android:background="@drawable/ic_image_close_white"
+            android:background="@drawable/ic_baseline_info_24"
             android:visibility="invisible"
             tools:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"

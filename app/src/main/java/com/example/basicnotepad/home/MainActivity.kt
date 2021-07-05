@@ -8,8 +8,6 @@ import kotlinx.android.synthetic.main.activity_home.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val navController by lazy { findNavController(R.id.nav_host_home_fragment) }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -18,6 +16,5 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupToolbarButtons() {
         toolbar.backButtonClick = { onBackPressed() }
-        toolbar.rightButtonClick = { finish() }
     }
 }
