@@ -1,4 +1,4 @@
-package com.example.basicnotepad.core.utils
+package com.example.basicnotepad.commons.utils
 
 import android.app.Activity
 import android.content.Context

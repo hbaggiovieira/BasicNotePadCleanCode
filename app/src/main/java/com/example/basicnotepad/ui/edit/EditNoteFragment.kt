@@ -5,7 +5,7 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.basicnotepad.R
-import com.example.basicnotepad.core.utils.hideKeyboard
+import com.example.basicnotepad.commons.utils.hideKeyboard
 import com.example.basicnotepad.repository.NotesRepository
 import com.example.basicnotepad.repository.dao.NotesDAO
 import com.example.basicnotepad.repository.model.NoteModel

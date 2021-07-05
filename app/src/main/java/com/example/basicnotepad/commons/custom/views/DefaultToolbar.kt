@@ -8,7 +8,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import com.example.basicnotepad.R
-import com.example.basicnotepad.core.utils.match
+import com.example.basicnotepad.commons.utils.match
 
 class DefaultToolbar @JvmOverloads constructor(
     context: Context,
