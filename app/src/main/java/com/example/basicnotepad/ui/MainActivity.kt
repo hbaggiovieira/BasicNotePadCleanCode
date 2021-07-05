@@ -1,4 +1,4 @@
-package com.example.basicnotepad.home
+package com.example.basicnotepad.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

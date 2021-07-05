@@ -1,4 +1,4 @@
-package com.example.basicnotepad.home.ui.home
+package com.example.basicnotepad.ui.home
 
 import android.content.Context
 import android.view.View
@@ -11,9 +11,9 @@ import androidx.navigation.NavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.basicnotepad.R
-import com.example.basicnotepad.home.ui.home.recycler.NotesListAdapter
-import com.example.basicnotepad.home.ui.home.recycler.NotesListener
-import com.example.basicnotepad.home.ui.notes.edit.EditNoteFragment
+import com.example.basicnotepad.ui.home.recycler.NotesListAdapter
+import com.example.basicnotepad.ui.home.recycler.NotesListener
+import com.example.basicnotepad.ui.edit.EditNoteFragment
 import com.example.basicnotepad.repository.NotesRepository
 import com.example.basicnotepad.repository.model.NoteModel
 

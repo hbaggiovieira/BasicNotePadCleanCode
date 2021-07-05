@@ -1,6 +1,6 @@
-package com.example.basicnotepad.di
+package com.example.basicnotepad.core.di
 
-import com.example.basicnotepad.home.ui.home.HomeViewModel
+import com.example.basicnotepad.ui.home.HomeViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

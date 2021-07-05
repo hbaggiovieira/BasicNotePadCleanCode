@@ -1,4 +1,4 @@
-package com.example.basicnotepad.home.ui.home
+package com.example.basicnotepad.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -47,7 +47,11 @@ class HomeFragment : Fragment() {
 
     private fun setupButtons() {
         fab.setOnClickListener {
-            navigator.navigate(HomeFragmentDirections.actionHomeFragmentToAddNoteFragment(true))
+            navigator.navigate(
+                HomeFragmentDirections.actionHomeFragmentToAddNoteFragment(
+                    true
+                )
+            )
         }
         buttonFilter.setOnClickListener {
             viewModel.toggleFilterByDate(requireContext(), it, recyclerNotes, navigator)

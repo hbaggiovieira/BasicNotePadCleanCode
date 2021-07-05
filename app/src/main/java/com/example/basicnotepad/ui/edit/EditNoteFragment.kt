@@ -1,4 +1,4 @@
-package com.example.basicnotepad.home.ui.notes.edit
+package com.example.basicnotepad.ui.edit
 
 import android.os.Bundle
 import android.view.View
