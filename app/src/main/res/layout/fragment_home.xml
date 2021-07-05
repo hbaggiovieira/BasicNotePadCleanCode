@@ -11,22 +11,30 @@
         android:id="@+id/buttonFilter"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_margin="@dimen/default_spacing_very_small"
+        android:layout_marginEnd="@dimen/default_spacing_small"
         android:background="@drawable/ic_baseline_keyboard_arrow_down_24"
+        android:elevation="10dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/guideLine"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.07"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerNotes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="16dp"
-        android:backgroundTint="@color/shadow"
+        android:layout_marginHorizontal="@dimen/default_spacing_small"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@id/fab"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/buttonFilter"
+        app:layout_constraintTop_toBottomOf="@id/guideLine"
         tools:itemCount="10"
         tools:listitem="@layout/note_list_item" />
 
