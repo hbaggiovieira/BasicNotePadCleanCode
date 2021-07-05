@@ -60,6 +60,7 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
     }
 
     private fun saveNote(note: NoteModel) {
+        //ToDo move this to viewModel
         repository.save(
             NoteModel(
                 noteId!!,
@@ -72,6 +73,7 @@ class EditNoteFragment : Fragment(R.layout.fragment_edit_note) {
     }
 
     private fun setupButtons() {
+        //ToDo move click functions to ViewModel
         fabSaveNote.setOnClickListener {
             val formatter = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
             saveNote(
