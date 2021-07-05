@@ -4,19 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.basicnotepad.R
-import com.example.basicnotepad.repository.dao.NotesDAO
 import com.example.basicnotepad.core.utils.hideKeyboard
 import com.example.basicnotepad.home.ui.home.recycler.NotesListAdapter
 import com.example.basicnotepad.home.ui.home.recycler.NotesListener
 import com.example.basicnotepad.home.ui.notes.edit.EditNoteFragment.Companion.IS_NEW_TAG
 import com.example.basicnotepad.home.ui.notes.edit.EditNoteFragment.Companion.TITLE_TAG
 import com.example.basicnotepad.repository.NotesRepository
+import com.example.basicnotepad.repository.dao.NotesDAO
 import com.example.basicnotepad.repository.model.NoteModel
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -27,6 +28,7 @@ class HomeFragment : Fragment() {
     private lateinit var mListener: NotesListener
     private lateinit var notesRepository: NotesDAO
     private lateinit var mAdapter: NotesListAdapter
+    private var isDescending = true
 
     private val navigator get() = findNavController()
     override fun onCreateView(
@@ -58,14 +60,24 @@ class HomeFragment : Fragment() {
 
     private fun setupButtons() {
         fab.setOnClickListener {
-            hideKeyboard()
             navigator.navigate(HomeFragmentDirections.actionHomeFragmentToAddNoteFragment(true, id))
+        }
+        buttonFilter.setOnClickListener {
+            if (isDescending) {
+                it.background = ContextCompat.getDrawable(requireContext(), R.drawable.ic_baseline_keyboard_arrow_up_24)
+                setupRecycler(notesRepository.getAllAsc())
+                isDescending = false
+            } else {
+                it.background = ContextCompat.getDrawable(requireContext(), R.drawable.ic_baseline_keyboard_arrow_down_24)
+                setupRecycler()
+                isDescending = true
+            }
         }
     }
 
-    private fun setupRecycler() {
+    private fun setupRecycler(dataSet: List<NoteModel> = notesRepository.getAll()) {
         val recyclerView = recyclerNotes
-        mAdapter = NotesListAdapter(notesRepository.getAll())
+        mAdapter = NotesListAdapter(dataSet)
         recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = mAdapter

@@ -20,4 +20,5 @@
     <string name="edt_text_title_hint">Título</string>
     <string name="content_description_save_note">Save Note</string>
     <string name="save">Salvar</string>
+    <string name="last_update_date">Última atualização: %s</string>
 </resources>

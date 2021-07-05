@@ -45,15 +45,17 @@ class NotesListAdapter(private val dataSet: List<NoteModel>) :
         fun bind(note: NoteModel) {
             with(itemView) {
                 this.editNoteTitleLabel.text = note.title
-                this.homeDateLabel.text = note.date
+                this.homeDateLabel.text = itemView.context.getString(R.string.last_update_date, note.date)
                 this.noteListItemLayout.setBackgroundColor(note.colorId)
                 this.txtNoteContent.apply {
-                    val substring = if (note.content.length >= 45) {
-                        note.content.substring(0, 44)
+                    val substring = if (note.content.length >= 90) {
+                        note.content.substring(0, 90)
                     } else {
                         note.content
                     }
                     "${substring}...".also { text = it }
+                }
+                this.noteListItemLayout.apply {
                     setOnClickListener {
                         listener.onClick(note)
                     }

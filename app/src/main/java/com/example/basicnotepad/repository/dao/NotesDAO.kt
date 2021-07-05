@@ -12,6 +12,9 @@ interface NotesDAO {
     @Query("SELECT * FROM NoteModel ORDER BY date DESC")
     fun getAll(): List<NoteModel>
 
+    @Query("SELECT * FROM NoteModel ORDER BY date ASC")
+    fun getAllAsc(): List<NoteModel>
+
     @Query("SELECT * FROM NoteModel WHERE title = :title")
     fun getByTitle(title: String): NoteModel
 
