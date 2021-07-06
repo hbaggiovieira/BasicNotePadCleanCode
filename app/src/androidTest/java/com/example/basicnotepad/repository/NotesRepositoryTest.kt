@@ -37,7 +37,7 @@ class NotesRepositoryTest {
     fun writeNoteAndReadInDatabase() {
         val noteModel = NoteModel(
             1,
-            "Test Title 2",
+            "Test Title",
             "06-07-2021",
             "Test content description",
             1
